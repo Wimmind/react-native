@@ -7,15 +7,14 @@ import {
     Text,
     StatusBar,
   } from 'react-native';
-import SoundPlayer from 'react-native-sound-player'
 
-class MusicPlayerScreen extends Component {
+class ExitScreen extends Component {
  
     render() {
         return (
-            <Text>MusicPlayer</Text>
+            <Text>ExitScreen</Text>
         );
     }
 }
  
-export default MusicPlayerScreen;
+export default ExitScreen;

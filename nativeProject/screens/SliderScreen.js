@@ -42,9 +42,7 @@ class SliderScreen extends Component {
         return ( 
         <View style={styles.container}>
             <Swiper style={styles.wrapper}
-                    height={240}
-                    onMomentumScrollEnd={(e, state, context) =>
-                    console.log('index:', state.index)}>
+                    height={240}>
                 {dataImage.map((image)=>(
                     <View
                         style={styles.slide}

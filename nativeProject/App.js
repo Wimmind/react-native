@@ -14,6 +14,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import SliderScreen from './screens/SliderScreen';
 import MusicPLayerScreen from './screens/MusicPlayerScreen';
+import OpenBrowserScreen from './screens/OpenBrowser';
+import ExitScreen from './screens/ExitScreen';
 
 
 const Tab = createBottomTabNavigator();
@@ -34,7 +36,9 @@ class App extends React.Component {
               inactiveBackgroundColor:"#00aaff"
             }}>
             <Tab.Screen name="Slider" component={SliderScreen} />
-            <Tab.Screen name="MusicScreen" component={MusicPLayerScreen} />
+            <Tab.Screen name="Music" component={MusicPLayerScreen} />
+            <Tab.Screen name="Browser" component={OpenBrowserScreen} />
+            <Tab.Screen name="Exit" component={ExitScreen} />
           </Tab.Navigator>
         </NavigationContainer>
       </>
