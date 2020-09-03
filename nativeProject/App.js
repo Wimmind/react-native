@@ -9,6 +9,9 @@ import {
   StatusBar,
 } from 'react-native';
 
+import {Provider} from 'react-redux';
+import store from './store/store';
+
 import {NavigationContainer} from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -17,15 +20,13 @@ import MusicPLayerScreen from './screens/MusicPlayerScreen';
 import OpenBrowserScreen from './screens/OpenBrowser';
 import ExitScreen from './screens/ExitScreen';
 
-
 const Tab = createBottomTabNavigator();
 
 class App extends React.Component {
 
-
   render() {
     return (
-      <>
+      <Provider store={store}>
         <StatusBar barStyle="dark-content" backgroundColor="#00aaff"/>
         <NavigationContainer>
           <Tab.Navigator
@@ -41,7 +42,7 @@ class App extends React.Component {
             <Tab.Screen name="Exit" component={ExitScreen} />
           </Tab.Navigator>
         </NavigationContainer>
-      </>
+      </Provider>
     );
   }
 

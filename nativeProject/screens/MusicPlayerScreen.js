@@ -13,7 +13,7 @@ class MusicPlayerScreen extends Component {
  
     render() {
         return (
-            <Text>MusicPlayer</Text>
+            <Text>MusicPlayer11</Text>
         );
     }
 }

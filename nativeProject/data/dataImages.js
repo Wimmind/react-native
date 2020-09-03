@@ -1,20 +1,16 @@
-const dataImage = [
+const data = [
     {
         id: 1,
-        src: process.env.PUBLIC_URL + `/image/winter.jpg`
+        src: require('../assets/fire.jpg')
     },
     {
         id: 2,
-        src: process.env.PUBLIC_URL + `/image/spring.jpg`
+        src: require('../assets/water.jpg')
     },
     {
         id: 3,
-        src: process.env.PUBLIC_URL + `/image/summer.jpg`
-    },
-    {
-        id: 4,
-        src: process.env.PUBLIC_URL + `/image/autumn.jpg`
-    },
+        src: require('../assets/cloud.jpg')
+    }
 ];
 
-export default dataImage;
+export default data;
