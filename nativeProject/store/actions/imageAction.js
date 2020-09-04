@@ -1,21 +1,15 @@
-export const loadImages = () => {
+ const loadImages = (data) => {
     return {
         type: 'LOAD_IMAGE',
-        payload: dataImage
+        payload: data
     }
 }
 
-const dataImage = [
-    {
-        id: 1,
-        src: require('../../assets/fire.jpg')
-    },
-    {
-        id: 2,
-        src: require('../../assets/water.jpg')
-    },
-    {
-        id: 3,
-        src: require('../../assets/cloud.jpg')
+const addImages = (data) => {
+    return {
+        type: 'ADD_SERVER_IMAGE',
+        payload: data
     }
-];
+}
+
+export {loadImages,addImages}
