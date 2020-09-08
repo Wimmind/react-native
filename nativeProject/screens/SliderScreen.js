@@ -1,8 +1,8 @@
-import React, {useEffect, Component} from 'react';
-import { useDispatch, useSelector, connect } from 'react-redux';
-import { Text, View, Image, Dimensions, StyleSheet } from 'react-native';
+import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { Text, View, Image, StyleSheet } from 'react-native';
 import Swiper from 'react-native-swiper';
-import { loadImages, allImages, addImages } from '../store/actions/imageAction';
+import {addImages } from '../store/actions/imageAction';
 
 
 const unsplashKey = '66cdc9fb009c679c50ff977af14839b182123dfc079b502372b9017866fc1621';
@@ -43,12 +43,11 @@ const getImage = async () => {
     }
     return arr;
 }
- 
 
 class SliderScreen extends Component {
 
     async componentDidMount() {
-        this.props.addImage(await getImage())
+        this.props.addImages(await getImage())
     }
   
     render() {
@@ -79,10 +78,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addImage: addImages(data)
-    }
+const mapDispatchToProps =  {
+    addImages
 }
  
 export default connect(mapStateToProps,mapDispatchToProps)(SliderScreen);
