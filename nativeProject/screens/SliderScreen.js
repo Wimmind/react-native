@@ -1,5 +1,5 @@
 import React, {useEffect, Component} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, connect } from 'react-redux';
 import { Text, View, Image, Dimensions, StyleSheet } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { loadImages, allImages, addImages } from '../store/actions/imageAction';
@@ -7,20 +7,6 @@ import { loadImages, allImages, addImages } from '../store/actions/imageAction';
 
 const unsplashKey = '66cdc9fb009c679c50ff977af14839b182123dfc079b502372b9017866fc1621';
 
-const dataImage = [
-    {
-        id: 1,
-        src: require('../assets/fire.jpg')
-    },
-    {
-        id: 2,
-        src: require('../assets/water.jpg')
-    },
-    {
-        id: 3,
-        src: require('../assets/cloud.jpg')
-    }
-];
 
 const styles = StyleSheet.create({
         container: {
@@ -39,7 +25,6 @@ const styles = StyleSheet.create({
         }
 });
 
- 
 const getImage = async () => {
     let arr = [];
     try {
@@ -58,36 +43,46 @@ const getImage = async () => {
     }
     return arr;
 }
+ 
 
-const SliderScreen = () => {
+class SliderScreen extends Component {
 
-    const dispatch = useDispatch();
+    async componentDidMount() {
+        this.props.addImage(await getImage())
+    }
+  
+    render() {
+        const {dataImages} = this.props;
 
-    useEffect(async ()=>{
-        dispatch(loadImages(dataImage));
-        dispatch(addImages(await getImage()));
-    },[dispatch])
+        return ( 
+            <View style={styles.container}>
+                <Swiper style={styles.wrapper}>
+                    {dataImages.map((image)=>(
+                        <View
+                            style={styles.slide}
+                            key={`${image.id}`}>
+                            <Image
+                                
+                                style={styles.image}
+                                source={image.src}/>
+                        </View>
+                    ))}
+                </Swiper>
+            </View>
+        );
+    }
+}
 
-    const allImages = useSelector((state)=>{
-        return state.allImages
-    })
+const mapStateToProps = (state) => {
+    return {
+        dataImages: state.allImages
+    }
+}
 
-    return ( 
-        <View style={styles.container}>
-            <Swiper style={styles.wrapper}>
-                {allImages.map((image)=>(
-                    <View
-                        style={styles.slide}
-                        key={`${image.id}`}>
-                        <Image
-                            
-                            style={styles.image}
-                            source={image.src}/>
-                    </View>
-                ))}
-            </Swiper>
-        </View>
-    );
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addImage: addImages(data)
+    }
 }
  
-export default SliderScreen;
+export default connect(mapStateToProps,mapDispatchToProps)(SliderScreen);
