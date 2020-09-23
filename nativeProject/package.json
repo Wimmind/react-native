@@ -19,8 +19,8 @@
     "react": "16.13.1",
     "react-native": "^0.63.2",
     "react-native-cli": "^2.0.1",
-    "react-native-fbsdk": "^2.0.0",
     "react-native-gesture-handler": "^1.7.0",
+    "react-native-login-twitter": "^3.0.4",
     "react-native-oauth": "^2.1.18",
     "react-native-reanimated": "^1.13.0",
     "react-native-safe-area-context": "^3.1.7",
@@ -32,6 +32,7 @@
     "react-navigation": "^4.4.0",
     "react-navigation-stack": "^2.8.2",
     "react-redux": "^7.2.1",
+    "react-router-dom": "^5.2.0",
     "react-social-login": "^3.4.9",
     "redux": "^4.0.5"
   },

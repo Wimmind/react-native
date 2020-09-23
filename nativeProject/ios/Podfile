@@ -12,6 +12,8 @@ target 'nativeProject' do
 
   pod 'RNSound', :path => '../node_modules/react-native-sound'
 
+  pod 'react-native-login-twitter', :path => '../node_modules/react-native-login-twitter'
+
   target 'nativeProjectTests' do
     inherit! :complete
     # Pods for testing

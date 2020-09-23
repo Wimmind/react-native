@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Text, View, Image, StyleSheet } from 'react-native';
 import Swiper from 'react-native-swiper';
-import {addImages } from '../store/actions/imageAction';
+import {addImages } from '../../store/actions/imageAction';
 
 
 const unsplashKey = '66cdc9fb009c679c50ff977af14839b182123dfc079b502372b9017866fc1621';
