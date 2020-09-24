@@ -41,23 +41,24 @@ class MusicPlayerScreen extends Component {
     }
 
     playSound = async () =>{
-    
+        const playbackState = await TrackPlayer.getState();
         await TrackPlayer.play();
 
-        const currentTrack = await TrackPlayer.getCurrentTrack();
-        if (currentTrack == null) {
+        const currentTrackId = await TrackPlayer.getCurrentTrack();
+        if (currentTrackId == null) {
           await TrackPlayer.reset();
           await TrackPlayer.add(playlist);
           await TrackPlayer.play();
+          this.setState({currentTrack: playlist[0]});
         } else {
           if (playbackState === TrackPlayer.STATE_PAUSED) {
             await TrackPlayer.play();
+            this.setState({isPlay: true});
           } else {
             await TrackPlayer.pause();
+            this.setState({isPlay: false});
           }
         }
-
-        this.setState({isPlay: true});
     }
 
     pouseSound = async () =>{
