@@ -7,27 +7,19 @@ import {
   View,
   Alert,
   NativeModules,
-  TouchableOpacity } from "react-native"
+  TouchableOpacity } from "react-native";
+  import { Link } from 'react-router-native';
 
 export default class TwitterButton extends Component {
-
-
-  handleLogout = () => {
-    console.log("logout")
-    RNTwitterSignIn.logOut()
-    this.setState({
-      isLoggedIn: false
-    })
-  }
 
   render() {
     const { isLoggedIn,twitterSignIn } = this.props;
     return (
       <View style={this.props.style}>
         {isLoggedIn
-          ? <TouchableOpacity onPress={this.handleLogout}>
-              <Text>Log out</Text>
-            </TouchableOpacity>
+          ? <Link to={{pathname: '/mainPage'}}>
+            <Text>Войти</Text>
+          </Link>
           : <Button name="logo-twitter" style={styles.button} onPress={twitterSignIn} title="Login with Twitter">
             </Button>}
       </View>
