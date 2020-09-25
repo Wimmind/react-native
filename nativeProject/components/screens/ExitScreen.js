@@ -6,6 +6,7 @@ import {
     BackHandler,
     Text
 } from 'react-native';
+import TrackPlayer from 'react-native-track-player';
 
 
 const styles =StyleSheet.create({
@@ -25,12 +26,16 @@ const styles =StyleSheet.create({
 
 class ExitScreen extends Component {
 
+    exitApp = () => {
+        TrackPlayer.destroy();
+        BackHandler.exitApp()
+    }
  
     render() {
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>Exit this app</Text>
-                <Button title="exit" onPress={()=>BackHandler.exitApp()} style={styles.button}/>
+                <Button title="exit" onPress={this.exitApp} style={styles.button}/>
             </View>
         );
     }

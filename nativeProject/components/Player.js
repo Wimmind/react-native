@@ -20,38 +20,17 @@ class Player extends Component {
     }
 
     componentDidMount() {
-        this.onTrackChange = TrackPlayer.addEventListener('playback-track-changed', async (data) => {
-            const track = await TrackPlayer.getTrack(data.nextTrack);
-            if (track) {
-              this.setState({trackTitle: track.title});
-              this.setState({trackArtist: track.artist});
-            }
-        });
-
-        this.onNextTrack = TrackPlayer.addEventListener('remote-next', async () => {
-          try {
-            await TrackPlayer.skipToNext();
-            console.log('некст трек')
-          } catch (_) {
-            console.log('это ласт трек')
+      this.onTrackChange = TrackPlayer.addEventListener('playback-track-changed', async (data) => {
+          const track = await TrackPlayer.getTrack(data.nextTrack);
+          if (track) {
+            this.setState({trackTitle: track.title});
+            this.setState({trackArtist: track.artist});
           }
-        });
-
-        this.onPrevTrack = TrackPlayer.addEventListener('remote-previous', async () => {
-          try {
-            await TrackPlayer.skipToPrevious();
-            console.log('некст трек')
-          } catch (_) {
-            console.log('это ласт трек')
-          }
-        });
-
+      });
     }
 
     componentWillUnmount() {
       this.onTrackChange.remove();
-      this.onNextTrack.remove();
-      this.onPrevTrack.remove();
     }
     
 
