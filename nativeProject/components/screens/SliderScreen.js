@@ -12,7 +12,9 @@ const styles = StyleSheet.create({
         container: {
             flex: 1,
         },
-        wrapper: {},
+        wrapper: {
+ 
+        },
         slide: {
             flex: 1,
             justifyContent: 'center',
@@ -28,6 +30,7 @@ const styles = StyleSheet.create({
 const getImage = async () => {
     let arr = [];
     try {
+        console.log('подгрузка картинок с сервера')
         const url = `https://api.unsplash.com/photos/random?orientation=landscape&per_page=1&query=izhevsk&client_id=${unsplashKey}&count=3`;
         const res = await fetch(url);
         const data = await res.json();
@@ -38,6 +41,7 @@ const getImage = async () => {
                 src: {uri: src}
             })
         });
+        console.log('подгрузка картинок с сервера закончена')
     } catch (err) {
         console.log(err)
     }

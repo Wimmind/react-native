@@ -20,6 +20,8 @@ import MusicPLayerScreen from './screens/MusicPlayerScreen';
 import OpenBrowserScreen from './screens/OpenBrowser';
 import ExitScreen from './screens/ExitScreen';
 
+import Icon from 'react-native-vector-icons/FontAwesome'
+
 const Tab = createBottomTabNavigator();
 
 class Screens extends React.Component {
@@ -27,15 +29,22 @@ class Screens extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <StatusBar barStyle="dark-content" backgroundColor="#00aaff"/>
+        <StatusBar barStyle="dark-content" backgroundColor="#00fcd6"/>
         <NavigationContainer>
           <Tab.Navigator
              tabBarOptions={{
-              activeTintColor:"white",
-              inactiveTintColor:"gray",
-              activeBackgroundColor:"#00aaff",
-              inactiveBackgroundColor:"#00aaff"
-            }}>
+              activeTintColor:"#37393d",
+              inactiveTintColor:"#00fcd6",
+              activeBackgroundColor:"#00fcd6",
+              inactiveBackgroundColor:"#37393d"
+             }}
+             screenOptions={({route})=>({
+               tabBarIcon: ({color})=>{
+                 const iconName = renderIcon[route.name];
+                 return <Icon name={iconName} size={25} color={color}/>
+               }
+             })}
+            >
             <Tab.Screen name="Slider" component={SliderScreen} />
             <Tab.Screen name="Music" component={MusicPLayerScreen} />
             <Tab.Screen name="Browser" component={OpenBrowserScreen} />
@@ -48,6 +57,12 @@ class Screens extends React.Component {
 
 };
 
+const renderIcon = {
+  'Slider' : 'image',
+  'Music' : 'music',
+  'Browser' : 'link',
+  'Exit' : 'sign-out',
+}
 
 
 export default Screens;

@@ -16,6 +16,10 @@ const styles =StyleSheet.create({
     },
     text: {
         marginBottom: 20
+    },
+    button: {
+        width: 200,
+        height: 50
     }
 })
 
@@ -26,7 +30,7 @@ class ExitScreen extends Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>Exit this app</Text>
-               <Button title="exit" onPress={()=>BackHandler.exitApp()}/>
+                <Button title="exit" onPress={()=>BackHandler.exitApp()} style={styles.button}/>
             </View>
         );
     }

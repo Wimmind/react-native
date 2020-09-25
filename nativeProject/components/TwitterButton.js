@@ -29,8 +29,8 @@ export default class TwitterButton extends Component {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#1b95e0',
-    color: 'white',
+    backgroundColor: '#37393d',
+    color: '#00fcd6',
     width: 200,
     height: 50
   }

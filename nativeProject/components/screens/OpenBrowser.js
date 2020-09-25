@@ -20,12 +20,19 @@ const styles =StyleSheet.create({
     },
     text: {
         marginBottom: 20
+    },
+    button: {
+      width: 200,
+      height: 50
     }
+
 })
+
 
 class OpenBrowserScreen extends Component {
 
     handlePress = () => {
+        console.log('открытие: '+url)
         Linking.openURL(url)
     }
  
@@ -33,7 +40,7 @@ class OpenBrowserScreen extends Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>Open Q-Digital site</Text>
-               <Button title="open" onPress={this.handlePress}/>
+               <Button title="open" onPress={this.handlePress} style={styles.button}/>
             </View>
         );
     }
