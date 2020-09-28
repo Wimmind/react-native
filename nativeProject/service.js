@@ -9,12 +9,6 @@ module.exports = async function() {
     { event: 'remote-stop', action: 'stop', log: 'плей(шторка)', log: 'стоп(шторка)' },
   ]
 
-
-  if(!TrackPlayer['isInited']){
-    TrackPlayer['isInited'] = true
-    TrackPlayer.setupPlayer({})
-  }
-
   listeners.forEach(({ event = '', action = '', log = '', catchLog = '' })=>{
     if (!TrackPlayer[event]){
       TrackPlayer[event] =  TrackPlayer.addEventListener(event, async () => {
