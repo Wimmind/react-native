@@ -1,8 +1,8 @@
 import React from 'react';
 import { NativeRouter, Route, Redirect } from "react-router-native";
 
-import Screens from './components/Screens';
-import Auth from './components/Auth';
+import Screens from './base-page/Screens';
+import Auth from './auth-page/Auth';
 
 class App extends React.Component {
 

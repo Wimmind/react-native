@@ -10,13 +10,13 @@ import {
 } from 'react-native';
 
 import {Provider} from 'react-redux';
-import store from '../store/store';
+import store from '../../store/store';
 
 import {NavigationContainer} from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import SliderScreen from './screens/SliderScreen';
-import MusicPLayerScreen from './screens/MusicPlayerScreen';
+import MusicPLayerScreen from './screens/player-screen/PlayerScreen';
 import OpenBrowserScreen from './screens/OpenBrowser';
 import ExitScreen from './screens/ExitScreen';
 

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import TrackPlayer from "react-native-track-player";
-import Player from '../Player'
+import Player from './Player'
 
 import {
   Image,
@@ -11,7 +11,7 @@ import {
   ViewPropTypes
 } from "react-native";
 
-import playlist from '../../data/playlistData';
+import playlist from '../../../../data/playlistData.json';
 
 class MusicPlayerScreen extends Component {
     state = {
@@ -43,10 +43,15 @@ class MusicPlayerScreen extends Component {
         const playbackState = await TrackPlayer.getState();
         const currentTrackId = await TrackPlayer.getCurrentTrack();
         if (currentTrackId == null) {
-          await TrackPlayer.reset();
-          await TrackPlayer.add(playlist);
-          await TrackPlayer.play();
-          this.setState({isPlay: true});
+          try {
+            await TrackPlayer.reset();
+            await TrackPlayer.add(playlist);
+            await TrackPlayer.play();
+            this.setState({isPlay: true});
+            console.log('плей')
+          } catch (e) {
+            console.log(e)
+          }
         } else {
           if (playbackState === TrackPlayer.STATE_PAUSED) {
             await TrackPlayer.play();

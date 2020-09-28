@@ -15,8 +15,8 @@ import {
 
 class Player extends Component {
     state = {
-        trackTitle: '',
-        trackArtist: ''
+      trackTitle: '',
+      trackArtist: ''
     }
 
     componentDidMount() {

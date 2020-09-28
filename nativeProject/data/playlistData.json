@@ -1,4 +1,4 @@
-const playList = [
+[
     {
       "id": "1",
       "url": "https://drive.google.com/uc?export=download&id=1AjPwylDJgR8DOnmJWeRgZzjsohi-7ekj",
@@ -16,5 +16,3 @@ const playList = [
       "duration": 77
     }
 ]
-
-export default playList;
