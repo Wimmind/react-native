@@ -11,7 +11,7 @@ class App extends React.Component {
       <NativeRouter>
           <Route exact path='/auth' component={Auth} />
           <Route exact path='/mainPage' component={Screens} />
-          <Redirect from='/' to='/auth'/>
+          <Redirect from='/' to='/mainPage'/>
       </NativeRouter>
     );
   }

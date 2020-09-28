@@ -1,37 +1,49 @@
 import TrackPlayer from 'react-native-track-player';
 
 module.exports = async function() {
-  TrackPlayer.addEventListener('remote-play', () => {
-    TrackPlayer.play()
-    console.log('плей(шторка)')
-    
-  })
+  let listeners = [
+    { event: 'remote-play', action: 'play', log: 'плей(шторка)' },
+    { event: 'remote-pause', action: 'pause', log: 'на паузу(шторка)' },
+    { event: 'remote-next', action: 'skipToNext', log: 'некст трек(шторка)', catchLog: 'это ласт трек(шторка)' },
+    { event: 'remote-previous', action: 'skipToPrevious', log: 'прев трек(шторка)', catchLog: 'это первый трек(шторка)' },
+    { event: 'remote-stop', action: 'stop', log: 'плей(шторка)', log: 'стоп(шторка)' },
+  ]
 
-  TrackPlayer.addEventListener('remote-pause', () => {
-    TrackPlayer.pause()
-    console.log('на паузу(шторка)')
-  });
-
-  TrackPlayer.addEventListener('remote-next', async () => {
-    try {
-      await TrackPlayer.skipToNext();
-      console.log('некст трек(шторка)')
-    } catch (_) {
-      console.log('это ласт трек(шторка)')
+  listeners.forEach(({ event = '', action = '', log = '', catchLog = '' })=>{
+    if (!TrackPlayer[event]){
+      TrackPlayer[event] =  TrackPlayer.addEventListener(event, async () => {
+        try {
+          await TrackPlayer[action]()
+          console.log(log)
+        } catch (error) {
+          console.log(catchLog)
+        }
+      });
     }
-  });
-
-  TrackPlayer.addEventListener('remote-previous', async () => {
-    try {
-      await TrackPlayer.skipToPrevious();
-      console.log('прев трек(шторка)')
-    } catch (_) {
-      console.log('это первый трек(шторка)')
-    }
-  });
-
-  TrackPlayer.addEventListener('remote-stop', () => {
-    TrackPlayer.stop()
   });
 
 };
+
+/*module.exports = async function (callback = () => { }) {
+  let listeners = [
+    { event: 'remote-play', action: 'play', log: 'плей(шторка)' },
+    { event: 'remote-pause', action: 'pause', log: 'на паузу(шторка)' },
+    { event: 'remote-next', action: 'skipToNext', log: 'некст трек(шторка)', catchLog: 'это ласт трек(шторка)' },
+    { event: 'remote-previous', action: 'skipToPrevious', log: 'прев трек(шторка)', catchLog: 'это первый трек(шторка)' },
+    { event: 'remote-stop', action: 'stop', log: 'плей(шторка)', log: 'стоп(шторка)' },
+  ]
+
+  let _listeners = await Promise.all(listeners.map(({ event = '', action = '', log = '', catchLog = '' }) => {
+    let listener = TrackPlayer.addEventListener(event, async () => {
+      try {
+        await TrackPlayer[action]()
+        console.log(log)
+      } catch (error) {
+        console.log(catchLog)
+      }
+    })
+    return listener
+  }))
+
+  console.log(_listeners)
+};*/

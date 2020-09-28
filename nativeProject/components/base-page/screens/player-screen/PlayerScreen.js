@@ -45,7 +45,7 @@ class MusicPlayerScreen extends Component {
         if (currentTrackId == null) {
           try {
             await TrackPlayer.reset();
-            await TrackPlayer.add(playlist);
+            await TrackPlayer.add([...[],...playlist]);
             await TrackPlayer.play();
             this.setState({isPlay: true});
             console.log('плей')
