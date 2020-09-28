@@ -23,7 +23,7 @@ class MusicPlayerScreen extends Component {
     }
 
     setup = async () =>{
-      await TrackPlayer.setupPlayer({});
+     // await TrackPlayer.setupPlayer({});
       await TrackPlayer.updateOptions({
           stopWithApp: true,
           capabilities: [
@@ -43,15 +43,11 @@ class MusicPlayerScreen extends Component {
         const playbackState = await TrackPlayer.getState();
         const currentTrackId = await TrackPlayer.getCurrentTrack();
         if (currentTrackId == null) {
-          try {
-            await TrackPlayer.reset();
-            await TrackPlayer.add([...[],...playlist]);
-            await TrackPlayer.play();
-            this.setState({isPlay: true});
-            console.log('плей')
-          } catch (e) {
-            console.log(e)
-          }
+          await TrackPlayer.reset();
+          await TrackPlayer.add([...[],...playlist]);
+          await TrackPlayer.play();
+          this.setState({isPlay: true});
+          console.log('плей')
         } else {
           if (playbackState === TrackPlayer.STATE_PAUSED) {
             await TrackPlayer.play();
