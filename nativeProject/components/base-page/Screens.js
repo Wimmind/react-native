@@ -17,7 +17,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import SliderScreen from './screens/SliderScreen';
 import MusicPLayerScreen from './screens/player-screen/PlayerScreen';
-import OpenBrowserScreen from './screens/OpenBrowser';
+import OpenBrowserScreen from './screens/BrowserScreen';
 import ExitScreen from './screens/ExitScreen';
 
 import Icon from 'react-native-vector-icons/FontAwesome'

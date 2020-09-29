@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { Text, View, Image, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 import Swiper from 'react-native-swiper';
 import {addImages } from '../../../store/actions/imageAction';
 
@@ -12,14 +12,11 @@ const styles = StyleSheet.create({
         container: {
             flex: 1,
         },
-        wrapper: {
- 
-        },
         slide: {
             flex: 1,
             justifyContent: 'center',
             alignItems: "center",
-            backgroundColor: '#fff'
+            backgroundColor: 'grey'
         },
         image: {
             width: 300,
@@ -59,13 +56,34 @@ class SliderScreen extends Component {
 
         return ( 
             <View style={styles.container}>
-                <Swiper style={styles.wrapper}>
+                <Swiper
+                    dot={
+                        <View
+                        style={{
+                            backgroundColor: '#37393d',
+                            width: 10,
+                            height: 10,
+                            borderRadius: 7,
+                            marginRight: 7
+                        }}
+                        />
+                    }
+                    activeDot={
+                        <View
+                            style={{
+                                backgroundColor: '#00fcd6',
+                                width: 13,
+                                height: 13,
+                                borderRadius: 7,
+                                marginRight: 7
+                            }}
+                        />
+                    }>
                     {dataImages.map((image)=>(
                         <View
                             style={styles.slide}
                             key={`${image.id}`}>
                             <Image
-                                
                                 style={styles.image}
                                 source={image.src}/>
                         </View>

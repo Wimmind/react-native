@@ -3,15 +3,11 @@ import TrackPlayer from "react-native-track-player";
 
 
 import {
-    Image,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
-    ViewPropTypes
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from "react-native";
-
-
 
 class Player extends Component {
     state = {
