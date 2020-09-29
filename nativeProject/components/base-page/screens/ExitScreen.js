@@ -35,9 +35,7 @@ class ExitScreen extends Component {
                 <Button 
                     title="exit" 
                     onPress={this.exitApp} 
-                    style={styles.button}
                     title="open" 
-                    onPress={this.handlePress} 
                     titleStyle={{ color: '#00fcd6' }}
                     buttonStyle={{backgroundColor:'#37393d'}}/>
             </View>
